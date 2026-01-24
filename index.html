@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mood Based Song Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🎧 Mood Based Song Generator</h1>
+
+<h3>1️⃣ Choose your mood</h3>
+
+<label><input type="radio" name="mood" value="sad"> 😔 Sad</label><br>
+<label><input type="radio" name="mood" value="happy"> 😄 Happy</label><br>
+<label><input type="radio" name="mood" value="romantic"> 🥰 Romantic</label><br>
+<label><input type="radio" name="mood" value="sleepy"> 😴 Sleepy</label><br>
+<label><input type="radio" name="mood" value="bored"> 🙁 Bored</label>
+
+<hr>
+
+<h3>2️⃣ Choose genre</h3>
+
+<label><input type="radio" name="genre" value="pop"> 🎵 Pop</label><br>
+<label><input type="radio" name="genre" value="melody"> 🎶 Melody</label><br>
+<label><input type="radio" name="genre" value="rock"> 🎸 Rock</label><br>
+<label><input type="radio" name="genre" value="lofi"> 🌙 Lofi</label>
+
+<hr>
+
+<h3>3️⃣ Choose language</h3>
+
+<label><input type="radio" name="language" value="english"> English</label><br>
+<label><input type="radio" name="language" value="tamil"> Tamil</label><br>
+<label><input type="radio" name="language" value="hindi"> Hindi</label><br>
+<label><input type="radio" name="language" value="telugu"> Telugu</label>
+
+<br><br>
+
+<button onclick="getSongs()">🎶 Get Songs</button>
+<button onclick="surpriseMe()">🎲 Surprise Me</button>
+
+<ul id="result"></ul>
+
+<script src="script.js"></script>
+
+</body>
+</html>
