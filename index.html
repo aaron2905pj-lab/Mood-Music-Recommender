@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mood Based Song Generator</title>
+  <meta charset="UTF-8">
+  <title>Mood Music</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>🎧 Mood Based Song Generator</h1>
+  <div class="app">
 
-<h3>1️⃣ Choose your mood</h3>
+    <h1>🎧 Mood Music</h1>
+    <p class="subtitle">Let’s find the right song for you</p>
 
-<label><input type="radio" name="mood" value="sad"> 😔 Sad</label><br>
-<label><input type="radio" name="mood" value="happy"> 😄 Happy</label><br>
-<label><input type="radio" name="mood" value="romantic"> 🥰 Romantic</label><br>
-<label><input type="radio" name="mood" value="sleepy"> 😴 Sleepy</label><br>
-<label><input type="radio" name="mood" value="bored"> 🙁 Bored</label>
+    <!-- STEP 1 -->
+    <h3>1️⃣ Choose mood</h3>
+    <div class="options">
+      <button class="option mood" data-value="happy">😊 Happy</button>
+      <button class="option mood" data-value="sad">😔 Sad</button>
+      <button class="option mood" data-value="chill">😌 Chill</button>
+      <button class="option mood" data-value="energy">⚡ Energetic</button>
+      <button class="option mood" data-value="sleepy">😴 Sleepy</button>
+    </div>
 
-<hr>
+    <!-- STEP 2 -->
+    <h3>2️⃣ Choose genre</h3>
+    <div class="options">
+      <button class="option genre" data-value="pop">🎵 Pop</button>
+      <button class="option genre" data-value="melody">🎶 Melody</button>
+      <button class="option genre" data-value="rock">🎸 Rock</button>
+      <button class="option genre" data-value="lofi">🌙 Lofi</button>
+    </div>
 
-<h3>2️⃣ Choose genre</h3>
+    <!-- STEP 3 -->
+    <h3>3️⃣ Choose language</h3>
+    <div class="options">
+      <button class="option language" data-value="english">English</button>
+      <button class="option language" data-value="tamil">Tamil</button>
+      <button class="option language" data-value="hindi">Hindi</button>
+      <button class="option language" data-value="telugu">Telugu</button>
+    </div>
 
-<label><input type="radio" name="genre" value="pop"> 🎵 Pop</label><br>
-<label><input type="radio" name="genre" value="melody"> 🎶 Melody</label><br>
-<label><input type="radio" name="genre" value="rock"> 🎸 Rock</label><br>
-<label><input type="radio" name="genre" value="lofi"> 🌙 Lofi</label>
+    <button class="recommend">Show Songs</button>
 
-<hr>
+    <div class="songs">
+      <h3>🎵 Songs for you</h3>
+      <ul id="songList"></ul>
+    </div>
 
-<h3>3️⃣ Choose language</h3>
+  </div>
 
-<label><input type="radio" name="language" value="english"> English</label><br>
-<label><input type="radio" name="language" value="tamil"> Tamil</label><br>
-<label><input type="radio" name="language" value="hindi"> Hindi</label><br>
-<label><input type="radio" name="language" value="telugu"> Telugu</label>
-
-<br><br>
-
-<button onclick="getSongs()">🎶 Get Songs</button>
-<button onclick="surpriseMe()">🎲 Surprise Me</button>
-
-<ul id="result"></ul>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
