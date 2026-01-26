@@ -1,39 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: white;
-  padding: 20px;
+  background: linear-gradient(135deg, #fde2e4, #e0f2fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 390px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 30px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
-  color: #1db954;
+  text-align: center;
+  color: #444;
+  margin-bottom: 6px;
 }
 
-label {
-  cursor: pointer;
-  display: block;
-  margin: 6px 0;
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 22px;
+  font-size: 14px;
 }
 
-button {
-  padding: 10px 20px;
-  margin: 10px 10px 10px 0;
+h3 {
+  margin: 18px 0 10px;
+  color: #555;
+  font-size: 15px;
+}
+
+/* options layout */
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* buttons */
+.option {
+  padding: 13px;
+  border-radius: 18px;
   border: none;
-  border-radius: 6px;
-  background-color: #1db954;
-  color: black;
-  font-weight: bold;
+  background: #f7f7f7;
   cursor: pointer;
+  font-size: 14px;
+  transition: 0.25s ease;
+  color: #444;
 }
 
-button:hover {
-  opacity: 0.8;
+.option:hover {
+  transform: translateY(-2px);
 }
 
-ul {
-  margin-top: 20px;
+/* active selection */
+.option.active {
+  background: #f9c5d1;
+  border: 2px solid #bae6fd;
 }
 
-li {
-  margin: 6px 0;
+/* show songs button */
+.recommend {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 20px;
+  border: none;
+  background: #bae6fd;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.recommend:hover {
+  background: #f9c5d1;
+}
+
+/* song list */
+.songs {
+  margin-top: 22px;
+}
+
+.songs h3 {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.songs ul li {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #666;
 }
