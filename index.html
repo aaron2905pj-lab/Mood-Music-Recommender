@@ -1,54 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mood Music</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Music Player</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+      color:white;
+    }
+
+    .app{
+      width:100%;
+      max-width:850px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:25px;
+      padding:35px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+      animation:fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    h1{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#cbd5e1;
+      margin-bottom:30px;
+    }
+
+    .section{
+      margin-bottom:28px;
+    }
+
+    .section h3{
+      margin-bottom:14px;
+      color:#f8fafc;
+    }
+
+    .options{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .option{
+      border:none;
+      padding:12px 20px;
+      border-radius:12px;
+      background:#1e293b;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+      font-size:15px;
+      font-weight:500;
+    }
+
+    .option:hover{
+      background:#334155;
+      transform:translateY(-2px);
+    }
+
+    .option.active{
+      background:linear-gradient(135deg,#06b6d4,#3b82f6);
+      box-shadow:0 5px 15px rgba(59,130,246,0.5);
+    }
+
+    .recommend{
+      width:100%;
+      padding:15px;
+      margin-top:10px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,#ec4899,#8b5cf6);
+      color:white;
+      font-size:17px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .recommend:hover{
+      transform:scale(1.02);
+      box-shadow:0 8px 20px rgba(236,72,153,0.4);
+    }
+
+    .songs{
+      margin-top:35px;
+      display:none;
+    }
+
+    .songs h3{
+      margin-bottom:18px;
+    }
+
+    #songList{
+      list-style:none;
+      display:grid;
+      gap:15px;
+    }
+
+    .song-card{
+      background:#1e293b;
+      padding:18px;
+      border-radius:16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      transition:0.3s;
+    }
+
+    .song-card:hover{
+      transform:translateX(5px);
+      background:#334155;
+    }
+
+    .song-info h4{
+      margin-bottom:5px;
+    }
+
+    .song-info p{
+      color:#cbd5e1;
+      font-size:14px;
+    }
+
+    .play-btn{
+      border:none;
+      padding:10px 16px;
+      border-radius:10px;
+      background:#06b6d4;
+      color:white;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .play-btn:hover{
+      background:#0891b2;
+    }
+
+    .empty{
+      text-align:center;
+      color:#fca5a5;
+      padding:20px;
+    }
+
+    @media(max-width:600px){
+
+      h1{
+        font-size:32px;
+      }
+
+      .song-card{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+
+      .play-btn{
+        width:100%;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
 
   <div class="app">
 
     <h1>🎧 Mood Music</h1>
-    <p class="subtitle">Let’s find the right song for you</p>
+    <p class="subtitle">Find songs that match your vibe instantly</p>
 
-    <!-- STEP 1 -->
-    <h3>1️⃣ Choose mood</h3>
-    <div class="options">
-      <button class="option mood" data-value="happy">😊 Happy</button>
-      <button class="option mood" data-value="sad">😔 Sad</button>
-      <button class="option mood" data-value="chill">😌 Chill</button>
-      <button class="option mood" data-value="energy">⚡ Energetic</button>
-      <button class="option mood" data-value="sleepy">😴 Sleepy</button>
+    <!-- Mood -->
+    <div class="section">
+      <h3>1️⃣ Choose Mood</h3>
+
+      <div class="options">
+        <button class="option mood" data-value="happy">😊 Happy</button>
+        <button class="option mood" data-value="sad">😔 Sad</button>
+        <button class="option mood" data-value="chill">😌 Chill</button>
+        <button class="option mood" data-value="energy">⚡ Energetic</button>
+        <button class="option mood" data-value="sleepy">😴 Sleepy</button>
+      </div>
     </div>
 
-    <!-- STEP 2 -->
-    <h3>2️⃣ Choose genre</h3>
-    <div class="options">
-      <button class="option genre" data-value="pop">🎵 Pop</button>
-      <button class="option genre" data-value="melody">🎶 Melody</button>
-      <button class="option genre" data-value="rock">🎸 Rock</button>
-      <button class="option genre" data-value="lofi">🌙 Lofi</button>
+    <!-- Genre -->
+    <div class="section">
+      <h3>2️⃣ Choose Genre</h3>
+
+      <div class="options">
+        <button class="option genre" data-value="pop">🎵 Pop</button>
+        <button class="option genre" data-value="melody">🎶 Melody</button>
+        <button class="option genre" data-value="rock">🎸 Rock</button>
+        <button class="option genre" data-value="lofi">🌙 Lofi</button>
+      </div>
     </div>
 
-    <!-- STEP 3 -->
-    <h3>3️⃣ Choose language</h3>
-    <div class="options">
-      <button class="option language" data-value="english">English</button>
-      <button class="option language" data-value="tamil">Tamil</button>
-      <button class="option language" data-value="hindi">Hindi</button>
-      <button class="option language" data-value="telugu">Telugu</button>
+    <!-- Language -->
+    <div class="section">
+      <h3>3️⃣ Choose Language</h3>
+
+      <div class="options">
+        <button class="option language" data-value="english">English</button>
+        <button class="option language" data-value="tamil">Tamil</button>
+        <button class="option language" data-value="hindi">Hindi</button>
+        <button class="option language" data-value="telugu">Telugu</button>
+      </div>
     </div>
 
-    <button class="recommend">Show Songs</button>
+    <button class="recommend">🎶 Show Songs</button>
 
+    <!-- Songs -->
     <div class="songs">
-      <h3>🎵 Songs for you</h3>
+      <h3>🎵 Recommended Songs</h3>
       <ul id="songList"></ul>
     </div>
 
   </div>
 
-  <script src="script.js"></script>
+  <script>
+
+    // SONG DATABASE
+    const songsDB = {
+
+      happy: {
+        pop: {
+          english: [
+            {title:"Shape of You", artist:"Ed Sheeran"},
+            {title:"Blinding Lights", artist:"The Weeknd"}
+          ],
+          tamil: [
+            {title:"Arabic Kuthu", artist:"Anirudh"},
+            {title:"Vaathi Coming", artist:"Anirudh"}
+          ]
+        },
+
+        melody: {
+          hindi: [
+            {title:"Kesariya", artist:"Arijit Singh"}
+          ]
+        }
+      },
+
+      sad: {
+        melody: {
+          tamil: [
+            {title:"Why This Kolaveri", artist:"Dhanush"}
+          ],
+          english: [
+            {title:"Someone Like You", artist:"Adele"}
+          ]
+        }
+      },
+
+      chill: {
+        lofi: {
+          english: [
+            {title:"Snowman", artist:"Sia"},
+            {title:"Night Changes", artist:"One Direction"}
+          ]
+        }
+      },
+
+      energy: {
+        rock: {
+          english: [
+            {title:"Believer", artist:"Imagine Dragons"}
+          ]
+        }
+      },
+
+      sleepy: {
+        lofi: {
+          tamil: [
+            {title:"Nee Kavithaigala", artist:"Pradeep Kumar"}
+          ]
+        }
+      }
+
+    };
+
+    let selectedMood = "";
+    let selectedGenre = "";
+    let selectedLanguage = "";
+
+    // SELECT BUTTONS
+    function setupSelection(className, callback){
+
+      const buttons = document.querySelectorAll(`.${className}`);
+
+      buttons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          buttons.forEach(btn => btn.classList.remove("active"));
+
+          button.classList.add("active");
+
+          callback(button.dataset.value);
+        });
+
+      });
+    }
+
+    setupSelection("mood", value => selectedMood = value);
+    setupSelection("genre", value => selectedGenre = value);
+    setupSelection("language", value => selectedLanguage = value);
+
+    // SHOW SONGS
+    document.querySelector(".recommend").addEventListener("click", () => {
+
+      const songList = document.getElementById("songList");
+
+      songList.innerHTML = "";
+
+      const songs =
+        songsDB?.[selectedMood]?.[selectedGenre]?.[selectedLanguage];
+
+      document.querySelector(".songs").style.display = "block";
+
+      if(!selectedMood || !selectedGenre || !selectedLanguage){
+
+        songList.innerHTML = `
+          <div class="empty">
+            Please select mood, genre and language.
+          </div>
+        `;
+
+        return;
+      }
+
+      if(songs && songs.length > 0){
+
+        songs.forEach(song => {
+
+          songList.innerHTML += `
+            <li class="song-card">
+
+              <div class="song-info">
+                <h4>${song.title}</h4>
+                <p>${song.artist}</p>
+              </div>
+
+              <button class="play-btn">
+                ▶ Play
+              </button>
+
+            </li>
+          `;
+        });
+
+      } else {
+
+        songList.innerHTML = `
+          <div class="empty">
+            No songs found for this combination 🎵
+          </div>
+        `;
+      }
+
+    });
+
+  </script>
+
 </body>
 </html>
